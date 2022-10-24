@@ -74,17 +74,22 @@ def getNavernewsInfo(filename,urlList,dateList,titleList,contentList,i):
 
 def main():
     i = 1
-    startdate='2021.10.01'
-    enddate='2021.12.31'
-    urlList = []
-    dateList = []
-    titleList = []
-    contentList = []
-    filename1 = '2021년4분기url.csv'
-    filename2 = '2021년4분기뉴스.csv'
+    for x in range(1,10):
+        if x < 10:
+            startdate=f'2019.0{x}.01'
+            enddate=f'2019.0{x}.31'
+        else:
+            startdate = f'2019.{x}.01'
+            enddate=f'2019.{x}.31'
+        urlList = []
+        dateList = []
+        titleList = []
+        contentList = []
+        filename1 = f'2019년{x}월url.csv'
+        filename2 = f'2019년{x}월뉴스.csv'
 
-    getUrl(startdate,enddate,urlList,filename1)
-    getNavernewsInfo(filename2,urlList,dateList,titleList,contentList,i)
+        getUrl(startdate,enddate,urlList,filename1)
+        getNavernewsInfo(filename2,urlList,dateList,titleList,contentList,i)
 
 
 

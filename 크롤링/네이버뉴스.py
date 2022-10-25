@@ -14,13 +14,12 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option("useAutomationExtension", False)
 
-# 유빈테스트
 
 def getUrl(startdate,enddate,urlList,filename,query,y,x):
     
     wd = webdriver.Chrome(ChromeDriverManager().install())
     
-    for i in range(1,1001,10):
+    for i in range(1,4001,10):
         try: 
 
             # wd.get(f'https://search.naver.com/search.naver?where=news&sm=tab_pge&query=%EB%8B%AD%EA%B3%A0%EA%B8%B0%20%EA%B0%80%EA%B2%A9&sort=0&photo=0&field=0&pd=3&ds={startdate}&de={enddate}&cluster_rank=11&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:r,p:from20210101to20211231,a:all&start={i}')

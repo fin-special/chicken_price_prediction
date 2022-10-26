@@ -8,11 +8,11 @@ from selenium.webdriver.common.keys import Keys
 import pandas as pd
 from webdriver_manager.chrome import ChromeDriverManager
 
-
 #웹드라이버 설정
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option("useAutomationExtension", False)
+
 
 
 def getUrl(startdate,enddate,urlList,filename,query,y,x):
@@ -120,5 +120,6 @@ def main():
     print('---------------')
     print('목표크롤링 최종 완료')
     print('---------------')
+
 if __name__ == '__main__':
     main()

@@ -43,7 +43,7 @@ def getUrl(startdate,enddate,urlList,filename,query,y,x):
     # 중복 url 제거
     urlList = list(set(urlList))
     df = pd.DataFrame({'url':urlList})
-    df.to_csv(filename)
+    # df.to_csv(filename)
     print('---------------')
     print(f'{y}년{x}월뉴스url 저장완료')
     print('---------------')
@@ -108,8 +108,8 @@ def main():
             titleList = []
             contentList = []
             # query = '닭고기 가격'
-            filename1 = f'./네이버뉴스크롤링결과/{query.replace(" ", "_")}_{y}년{x}월url.csv'
-            filename2 = f'./네이버뉴스크롤링결과/{query.replace(" ", "_")}_{y}년{x}월뉴스.csv'
+            filename1 = f'./데이터전처리/닭_2012_2021/{query.replace(" ", "_")}_{y}년{x}월url.csv'
+            filename2 = f'./데이터전처리/data/닭_2012_2021/{query.replace(" ", "_")}_{y}년{x}월뉴스.csv'
 
             getUrl(startdate,enddate,urlList,filename1,query,y,x)
             getNavernewsInfo(filename2,urlList,dateList,titleList,contentList,i,y,x)

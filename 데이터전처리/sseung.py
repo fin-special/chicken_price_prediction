@@ -37,6 +37,5 @@ for i in range(2017, 2022):
     ranked_tags_df = pd.DataFrame(ranked_tags, columns=['tags', 'count'])
 
     # csv로 저장
-    for i in range(2017, 2022):
-        for j in range(1, 13):
-            ranked_tags_df.to_csv(f'./데이터전처리/pre_data/닭/닭빈도{i}-{j}.csv', index=False)
+    ranked_tags_df.to_csv(f'./데이터전처리/pre_data/닭/닭빈도{i}-{j}.csv', index=False)
+    print(f'{i}년{j}월 저장완료')

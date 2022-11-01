@@ -1,6 +1,7 @@
 from email.errors import StartBoundaryNotFoundDefect
 from bs4 import BeautifulSoup
 import pandas as pd
+import re
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -79,6 +80,8 @@ def getNavernewsInfo(filename,urlList,dateList,titleList,contentList,i,y,x):
     wd.quit()
     df = pd.DataFrame({'날짜':dateList, '기사제목':titleList, '기사내용':contentList})
     df = df.drop_duplicates(subset='기사제목')      #기사제목 중복 제거
+    df['기사제목'] = df['기사제목'].str.replace(pat=r'[^\w]',repl=r' ',regex=True)
+    df['기사내용'] = df['기사내용'].str.replace(pat=r'[^\w]',repl=r' ',regex=True)
     df.to_csv(filename)
     
     print('---------------')
@@ -96,7 +99,7 @@ def main():
     startyear = int(input(f'검색시작연도 : '))     # 검색시작연도
     endyear = int(input(f'검색종료연도(1년만 검색시 검색시작연도와 동일) : '))       # 검색종료연도(1년만 검색시 검색시작연도와 동일)
     for y in range(startyear,endyear+1):
-        for x in range(1,13):
+        for x in range(1, 13):
             if x < 10:
                 startdate=f'{y}.0{x}.01'
                 enddate=f'{y}.0{x}.31'
@@ -108,8 +111,8 @@ def main():
             titleList = []
             contentList = []
             # query = '닭고기 가격'
-            filename1 = f'./데이터전처리/닭_2012_2021/{query.replace(" ", "_")}_{y}년{x}월url.csv'
-            filename2 = f'./데이터전처리/data/닭_2012_2021/{query.replace(" ", "_")}_{y}년{x}월뉴스.csv'
+            filename1 = f'./데이터전처리/data/닭고기가격_2012_2021/{query.replace(" ", "_")}_{y}년{x}월url.csv'
+            filename2 = f'./데이터전처리/data/닭고기가격_2012_2021/{query.replace(" ", "_")}_{y}년{x}월뉴스.csv'
 
             getUrl(startdate,enddate,urlList,filename1,query,y,x)
             getNavernewsInfo(filename2,urlList,dateList,titleList,contentList,i,y,x)

@@ -46,5 +46,3 @@ for i in range(2012, 2022):
         # csv로 저장
         ranked_tags_df.to_csv(f'./데이터전처리/pre_data/닭/닭빈도{i}-{j}.csv', index=False)
         print(f'{i}년{j}월 저장완료')
-        
-    
